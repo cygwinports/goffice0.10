@@ -1,0 +1,25 @@
+--- origsrc/goffice-0.10.0/goffice/Makefile.am	2012-12-03 21:26:29.000000000 -0600
++++ src/goffice-0.10.0/goffice/Makefile.am	2012-12-26 23:19:17.595382100 -0600
+@@ -457,10 +457,10 @@ libgoffice_@GOFFICE_API_VER@_la_LIBADD =
+ 	$(GOFFICE_LIBS)	\
+ 	$(GTK_MAC_LIBS)
+ 
+-libgoffice_@GOFFICE_API_VER@_la_LDFLAGS = -version-info $(VERSION_INFO)
+-if WITH_WIN32
++libgoffice_@GOFFICE_API_VER@_la_LDFLAGS = -version-info $(VERSION_INFO) -no-undefined
++if WITH_NATIVE_WIN32
+ libgoffice_@GOFFICE_API_VER@_la_DEPENDENCIES = goffice.def
+-libgoffice_@GOFFICE_API_VER@_la_LDFLAGS += -no-undefined -export-symbols goffice.def
++libgoffice_@GOFFICE_API_VER@_la_LDFLAGS += -export-symbols goffice.def
+ endif
+ 
+ BUILT_SOURCES +=	goffice-paths.h embedded-stuff.c
+@@ -524,7 +524,7 @@ goffice-paths.h: Makefile
+ 
+ include $(top_srcdir)/goffice.mk
+ 
+-if WITH_WIN32
++if WITH_NATIVE_WIN32
+ LIB_PUBLIC_HDRS = $(libgoffice_@GOFFICE_API_VER@_la_HEADERS)
+ 
+ 

@@ -1,0 +1,55 @@
+--- origsrc/goffice-0.10.0/docs/reference/Makefile.am	2012-12-04 17:45:16.000000000 -0600
++++ src/goffice-0.10.0/docs/reference/Makefile.am	2012-12-27 01:12:25.340525300 -0600
+@@ -8,7 +8,7 @@ DOC_SOURCE_DIR=../../goffice
+ 
+ SCANGOBJ_OPTIONS= --nogtkinit --type-init-func="g_type_init ()"
+ 
+-SCAN_OPTIONS= --deprecated-guards="GOFFICE_DISABLE_DEPRECATED" --rebuild-types
++SCAN_OPTIONS= --deprecated-guards="GOFFICE_DISABLE_DEPRECATED"
+ 
+ MKDB_OPTIONS=--xml-mode --output-format=xml
+ 
+--- origsrc/goffice-0.10.0/docs/reference/goffice-0.10.types	2012-12-18 17:47:18.000000000 -0600
++++ src/goffice-0.10.0/docs/reference/goffice-0.10.types	2012-12-27 00:49:44.781401800 -0600
+@@ -17,7 +17,6 @@
+ go_component_mime_dialog_get_type
+ go_conf_node_get_type
+ go_cspline_get_type
+-go_csplinel_get_type
+ go_data_get_type
+ go_data_matrix_get_type
+ go_data_matrix_val_get_type
+@@ -73,7 +72,6 @@
+ go_plugin_service_resource_get_type
+ go_plugin_service_simple_get_type
+ go_regression_stat_get_type
+-go_regression_statl_get_type
+ go_resource_type_get_type
+ go_rotation_sel_get_type
+ go_search_replace_get_type
+--- origsrc/goffice-0.10.0/goffice/math/go-cspline.c	2012-08-21 21:02:40.000000000 -0500
++++ src/goffice-0.10.0/goffice/math/go-cspline.c	2012-12-26 23:36:36.847118700 -0600
+@@ -229,9 +229,9 @@ SUFFIX(go_cspline_ref) (GOCSpline *sp)
+ 
+ GType
+ #ifdef LONG_DOUBLE
+-go_cspline_get_type (void)
+-#else
+ go_csplinel_get_type (void)
++#else
++go_cspline_get_type (void)
+ #endif
+ {
+ 	static GType t = 0;
+@@ -239,9 +239,9 @@ go_csplinel_get_type (void)
+ 	if (t == 0) {
+ 		t = g_boxed_type_register_static (
+ #ifdef LONG_DOUBLE
+-		     "GOCSpline",
+-#else
+ 		     "GOCSplinel",
++#else
++		     "GOCSpline",
+ #endif
+ 			 (GBoxedCopyFunc)SUFFIX(go_cspline_ref),
+ 			 (GBoxedFreeFunc)SUFFIX(go_cspline_destroy));
