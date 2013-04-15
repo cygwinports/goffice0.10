@@ -2,7 +2,7 @@ ORIG_PN="goffice"
 inherit gnome2
 
 NAME="goffice0.10"
-VERSION=0.10.0
+VERSION=0.10.1
 RELEASE=1
 CATEGORY="GNOME"
 SUMMARY="GNOME office application library"
@@ -18,4 +18,4 @@ girepository_GOffice0_10_CONTENTS="usr/*/gir*/GOffice-0.10.*"
 
 DIFF_EXCLUDES="*.types *-features.h"
 
-CYGCONF_ARGS="--enable-introspection --with-lasem"
+CYGCONF_ARGS="--enable-introspection --with-lasem --with-config-backend=gsettings"
