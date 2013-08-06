@@ -2,16 +2,16 @@ ORIG_PN="goffice"
 inherit gnome2
 
 NAME="goffice0.10"
-VERSION=0.10.1
+VERSION=0.10.4
 RELEASE=1
-CATEGORY="GNOME"
+CATEGORY="Libs"
 SUMMARY="GNOME office application library"
 DESCRIPTION="A set of document-centric objects and utilities for GNOME"
 
 PATCH_URI="0.10.0-cygwin.patch
            0.10.0-no-long-double.patch"
 
-PKG_NAMES="lib${PN}_10 lib${PN}-devel girepository-GOffice0.10"
+PKG_NAMES="lib${NAME}_10 lib${NAME}-devel girepository-GOffice0.10"
 libgoffice0_10_10_CONTENTS="usr/bin/*-0.10-10.dll usr/lib/goffice/ usr/share/doc/ usr/share/locale/"
 libgoffice0_10_devel_CONTENTS='usr/include/ usr/lib/lib* usr/lib/pkgconfig/ usr/share/gtk-doc/'
 girepository_GOffice0_10_CONTENTS="usr/*/gir*/GOffice-0.10.*"
