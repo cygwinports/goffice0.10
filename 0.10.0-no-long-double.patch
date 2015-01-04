@@ -27,3 +27,17 @@
  go_resource_type_get_type
  go_rotation_sel_get_type
  go_search_replace_get_type
+--- origsrc/goffice-0.10.18/goffice/math/go-dtoa.c	2014-09-21 17:03:01.000000000 -0500
++++ src/goffice-0.10.18/goffice/math/go-dtoa.c	2015-01-04 15:47:07.521158500 -0600
+@@ -174,7 +174,11 @@ static int fmt_fp(FAKE_FILE *f, long dou
+ 		return MAX(w, 3+pl);
+ 	}
+ 
++#ifdef GOFFICE_WITH_LONG_DOUBLE
+ 	y = frexpl(y, &e2) * 2;
++#else
++	y = frexp(y, &e2) * 2;
++#endif
+ 	if (y) e2--;
+ 
+ 	if ((t|32)=='a') {
